@@ -16,15 +16,12 @@ class MeetupController {
 			};
 		}
 
-		console.log(2);
-
 		const meetups = await Meetup.findAll({
 			where,
 			include: [{ model: User }],
 			limit: 10,
 			offset: 10 * (page - 1),
 		});
-		console.log(3);
 
 		return res.json(meetups);
 	}
