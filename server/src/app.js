@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import Youch from 'youch';
 import express from 'express';
+import cors from 'cors';
 import { resolve } from 'path';
 import 'express-async-errors';
 
@@ -17,10 +18,10 @@ class App {
 		this.routes();
 		// this.exceptionHandler();
 	}
-
 	middlewares() {
 		this.server.use(express.json());
 		this.server.use(express.urlencoded({ extended: false }));
+		this.server.use(cors());
 		this.server.use(
 			'/file',
 			express.static(resolve(__dirname, '..', 'tmp', 'uploads'))

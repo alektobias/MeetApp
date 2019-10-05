@@ -8,7 +8,7 @@ export default async (req, res, next) => {
 			oldPassword: Yup.string()
 				.min(6)
 				.required(),
-			password: Yup.string()
+			password: Yup.string()	
 				.min(6)
 				.when('oldPassword', (oldPassword, field) =>
 					oldPassword ? field.required() : field

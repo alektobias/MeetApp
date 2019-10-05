@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import AuthLayout from '../pages/_layouts/Auth';
 import DefaultLayout from '../pages/_layouts/Default';
@@ -9,7 +10,7 @@ export default function RouteWrapper({
 	isPrivate,
 	...rest
 }) {
-	const signed = true;
+	const { signed } = useSelector(state => state.auth);
 	if (!signed && isPrivate) {
 		return <Redirect to="/" />;
 	}
