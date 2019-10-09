@@ -1,13 +1,14 @@
 import React from 'react';
 import { MdNavigateNext, MdAddCircleOutline } from 'react-icons/md';
 import { Container, Meetup } from './styles';
+import history from '~/services/history';
 
 export default function Dashboard() {
 	return (
 		<Container>
 			<div>
 				<h2>Meus Meetups</h2>
-				<button type="button">
+				<button type="button" onClick={() => history.push('/meetup/new')}>
 					<MdAddCircleOutline size={20} color="#fff" />
 					Novo meetup
 				</button>
