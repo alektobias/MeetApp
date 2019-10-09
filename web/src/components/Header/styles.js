@@ -26,6 +26,7 @@ export const Profile = styled.div`
 	align-items: flex-end;
 	margin-right: 30px;
 	span {
+		text-transform: capitalize;
 		color: #fff;
 		font-size: 14px;
 		font-weight: bold;

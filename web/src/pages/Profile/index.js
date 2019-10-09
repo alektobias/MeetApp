@@ -1,19 +1,41 @@
 import React from 'react';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { Form, Input } from '@rocketseat/unform';
+import { userUpdateRequest } from '~/store/modules/user/actions';
+import Spin from '~/components/Spin';
 
 export default function Profile() {
+	const dispatch = useDispatch();
+	const { profile, loading } = useSelector(state => state.user);
+
+	function handleSubmit(data) {
+		dispatch(userUpdateRequest(data));
+	}
+
 	return (
-		<form>
-			<input placeholder="Nome completo" />
-			<input placeholder="Seu e-mail" />
+		<Form initialData={profile} onSubmit={handleSubmit}>
+			<Input placeholder="Nome completo" name="name" />
+			<Input placeholder="Seu e-mail" name="email" />
 			<hr />
-			<input placeholder="Senha atual" type="password" />
-			<input placeholder="Nova senha" type="password" />
-			<input placeholder="Confirmação de senha" type="password" />
+			<Input placeholder="Senha atual" type="password" name="oldPassword" />
+			<Input placeholder="Nova senha" type="password" name="password" />
+			<Input
+				placeholder="Confirmação de senha"
+				type="password"
+				name="confirmPassword"
+			/>
 			<button type="submit">
-				<MdAddCircleOutline color="#fff" size="20" />
-				Salvar Perfil
+				{loading ? (
+					<Spin />
+				) : (
+					<>
+						<MdAddCircleOutline color="#fff" size="20" />
+						Salvar Perfil
+					</>
+				)}
 			</button>
-		</form>
+		</Form>
 	);
 }

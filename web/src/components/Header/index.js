@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container, Content, Profile, Logout } from './styles';
 import Logo from '~/assets/images/logo.svg';
+import { signOut } from '~/store/modules/auth/actions';
 
 export default function Header() {
+	const dispatch = useDispatch();
+	const { name } = useSelector(state => state.user.profile);
+
 	return (
 		<Container>
 			<Content>
@@ -14,10 +19,10 @@ export default function Header() {
 				</nav>
 				<aside>
 					<Profile>
-						<span>Alek Tobias</span>
+						<span>{name}</span>
 						<Link to="/profile">Meu Perfil</Link>
 					</Profile>
-					<Logout>Sair</Logout>
+					<Logout onClick={() => dispatch(signOut())}>Sair</Logout>
 				</aside>
 			</Content>
 		</Container>

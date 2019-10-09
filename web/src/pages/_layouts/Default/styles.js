@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken, lighten } from 'polished';
 
 export const Container = styled.div`
 	min-height: 100vh;
@@ -44,6 +45,16 @@ export const Content = styled.div`
 			border-radius: 4px;
 			margin-bottom: 10px;
 			resize: none;
+		}
+		span {
+			margin-top: 5px;
+			width: 100%;
+			color: ${darken(0.05, '#ff0000')};
+			padding: 10px;
+			font-weight: bold;
+			border: 1px solid ${darken(0.03, '#ff0000')};
+			border-radius: 4px;
+			background: ${lighten(0.2, '#ff0000')};
 		}
 	}
 	button {
