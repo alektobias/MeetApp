@@ -49,9 +49,10 @@ export const Content = styled.div`
 		span {
 			margin-top: 5px;
 			width: 100%;
-			color: ${darken(0.05, '#ff0000')};
+
 			padding: 10px;
 			font-weight: bold;
+			color: ${darken(0.05, '#ff0000')};
 			border: 1px solid ${darken(0.03, '#ff0000')};
 			border-radius: 4px;
 			background: ${lighten(0.2, '#ff0000')};
@@ -69,6 +70,9 @@ export const Content = styled.div`
 		border-radius: 4px;
 		margin: 15px 0;
 		font-size: 16px;
+		&:hover {
+			background: ${darken(0.03, '#f94d6a')};
+		}
 		svg {
 			margin-right: 17px;
 		}

@@ -5,6 +5,7 @@ export const Container = styled.div`
 	background: rgba(0, 0, 0, 0.4);
 	margin-bottom: 10px;
 	border-radius: 4px;
+	overflow: hidden;
 	label {
 		display: flex;
 		align-items: center;

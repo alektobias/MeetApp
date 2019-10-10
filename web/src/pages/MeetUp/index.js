@@ -1,23 +1,32 @@
 import React from 'react';
-import { Form, input } from '@rocketseat/unform';
+import { Form, Input } from '@rocketseat/unform';
+import { MdAddCircleOutline } from 'react-icons/md';
 import { Container } from './styles';
 import ImageInput from './ImageInput';
 
 export default function MeetUp() {
+	function handleSubmit(data) {
+		console.log(data);
+	}
+
 	return (
 		<Container>
-			<form>
-				<ImageInput />
-				<input placeholder="Título do Meetup" type="text" />
-				<textarea
+			<Form onSubmit={handleSubmit}>
+				<ImageInput name="file_id" />
+				<Input placeholder="Título do Meetup" type="text" name="title" />
+				<Input
+					multiline
 					placeholder="Descrição completa"
 					type="text"
-					id="description"
+					name="description"
 				/>
-				<input placeholder="Data do meetup" type="date" />
-				<input placeholder="Localização" type="text" />
-				<button type="submit">Salvar meetup</button>
-			</form>
+				<Input placeholder="Data do meetup" type="text" name="date" />
+				<Input placeholder="Localização" type="text" name="location" />
+				<button type="submit">
+					<MdAddCircleOutline size={20} />
+					Salvar meetup
+				</button>
+			</Form>
 		</Container>
 	);
 }

@@ -33,8 +33,20 @@ export function* signIn({ payload }) {
 		toast.error('Falha no login verifique seus dados');
 	}
 }
+export function setToken({ payload }) {
+	if (!payload) return;
+	const { token } = payload.auth;
 
+	if (token) {
+		api.defaults.headers.Authorization = `Bearer ${token}`;
+	}
+}
+export function signOut() {
+	history.push('/');
+}
 export default all([
 	takeLatest('@auth/SIGN_UP_REQUEST', signUp),
 	takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+	takeLatest('persist/REHYDRATE', setToken),
+	takeLatest('@auth/SIGN_OUT', signOut),
 ]);
