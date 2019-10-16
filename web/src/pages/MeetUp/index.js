@@ -1,12 +1,30 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 import { MdAddCircleOutline } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import { Container } from './styles';
 import ImageInput from './ImageInput';
+import api from '~/services/api';
+import history from '~/services/history';
 
 export default function MeetUp() {
-	function handleSubmit(data) {
-		console.log(data);
+	async function handleSubmit({ file_id, title, description, date, location }) {
+		try {
+			await api.post('/meetups', {
+				file_id,
+				title,
+				description,
+				date,
+				location,
+			});
+			toast.success('Meetup criado com sucesso!');
+
+			setTimeout(() => {
+				history.push('/dashboard');
+			}, 2000);
+		} catch (err) {
+			toast.error('Algo deu errado tente novamente mais tarde!');
+		}
 	}
 
 	return (

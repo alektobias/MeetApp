@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MdNavigateNext, MdAddCircleOutline } from 'react-icons/md';
+import { format, parseISO } from 'date-fns';
+import { pt } from 'date-fns/locale';
+import { useDispatch } from 'react-redux';
 import { Container, Meetup } from './styles';
 import history from '~/services/history';
+import api from '~/services/api';
+import { meetupSelect } from '~/store/modules/meetup/actions';
 
 export default function Dashboard() {
+	const dispatch = useDispatch();
+	const [meetups, setMeetups] = useState([]);
+	function handleSelect(data) {
+		dispatch(meetupSelect(data));
+		history.push('/details');
+	}
+	useEffect(() => {
+		async function getMeetups() {
+			const response = await api.get('/organizing');
+			setMeetups(
+				response.data.map(({ date, ...rest }) => ({
+					date: format(parseISO(date), "dd 'de' MMMM, à's' HH'h'", {
+						locale: pt,
+					}),
+					...rest,
+				}))
+			);
+		}
+		getMeetups();
+	}, []);
 	return (
 		<Container>
 			<div>
@@ -13,34 +38,19 @@ export default function Dashboard() {
 					Novo meetup
 				</button>
 			</div>
-			<Meetup>
-				<strong>Meetup de React Native</strong>
-				<section>
-					<span>24 de junho, às 20h</span>
-					<MdNavigateNext size={24} color="#fff" />
-				</section>
-			</Meetup>
-			<Meetup>
-				<strong>Meetup de React Native</strong>
-				<section>
-					<span>24 de junho, às 20h</span>
-					<MdNavigateNext size={24} color="#fff" />
-				</section>
-			</Meetup>
-			<Meetup>
-				<strong>Meetup de React Native</strong>
-				<section>
-					<span>24 de junho, às 20h</span>
-					<MdNavigateNext size={24} color="#fff" />
-				</section>
-			</Meetup>
-			<Meetup>
-				<strong>Meetup de React Native</strong>
-				<section>
-					<span>24 de junho, às 20h</span>
-					<MdNavigateNext size={24} color="#fff" />
-				</section>
-			</Meetup>
+			{meetups.map(meetup => (
+				<Meetup key={meetup.title}>
+					<strong>{meetup.title}</strong>
+					<section>
+						<span>{meetup.date}</span>
+						<MdNavigateNext
+							size={24}
+							color="#fff"
+							onClick={() => handleSelect(meetup)}
+						/>
+					</section>
+				</Meetup>
+			))}
 		</Container>
 	);
 }

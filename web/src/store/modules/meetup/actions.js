@@ -1,17 +1,41 @@
-export function createMeetupRequest(data) {
-	const { file_id, title, description, location, date } = data;
+export function meetupSelect(data) {
+	const { id, title, description, location, date, file_id } = data;
+
 	return {
-		type: '@meetup/CREATE_REQUEST',
-		payload: { file_id, title, description, location, date },
+		type: '@meetup/SELECT',
+		payload: {
+			data,
+		},
 	};
 }
-export function createMeetupSuccess() {
+export function deleteMeetup(id) {
 	return {
-		type: '@meetup/CREATE_SUCCESS',
+		type: '@meetup/DELETE',
+		payload: { id },
 	};
 }
-export function createMeetupFailure() {
+export function updateMeetupRequest(data) {
+	const { id, title, description, location, date, file_id } = data;
 	return {
-		type: '@meetup/CREATE_FAILURE',
+		type: '@meetup/UPDATE_REQUEST',
+		payload: { id, title, description, location, date, file_id },
+	};
+}
+export function updateMeetupSuccess(data) {
+	const { id, title, description, location, date, file_id } = data;
+
+	return {
+		type: '@meetup/UPDATE_SUCCESS',
+		payload: { id, title, description, location, date, file_id },
+	};
+}
+export function updateMeetupFailure() {
+	return {
+		type: '@meetup/UPDATE_FAILURE',
+	};
+}
+export function loading() {
+	return {
+		type: '@meetup/LOADING',
 	};
 }

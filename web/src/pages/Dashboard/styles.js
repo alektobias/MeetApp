@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	max-width: 940px;
 	width: 100%;
+	margin: 40px;
 	div {
 		display: flex;
 		justify-content: space-between;
@@ -29,6 +30,9 @@ export const Meetup = styled.main`
 			color: rgba(255, 255, 255, 0.6);
 			font-size: 16px;
 			margin-right: 30px;
+		}
+		svg {
+			cursor: pointer;
 		}
 	}
 `;
