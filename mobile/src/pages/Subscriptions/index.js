@@ -3,7 +3,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 import Header from '~/components/Header';
 
-import { List } from './styles';
+import { Container, List } from './styles';
 import Meetup from '~/components/Meetup';
 import api from '~/services/api';
 
@@ -20,12 +20,15 @@ export default function Subscriptions() {
 
   return (
     <Background>
+      <Container>
+
       <Header />
       <List
         data={data}
         keyExtractor={item => String(item.id)}
         renderItem={({ item }) => <Meetup data={item} subscription />}
-      />
+        />
+      </Container>
     </Background>
   );
 }
