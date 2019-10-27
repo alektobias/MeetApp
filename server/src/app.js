@@ -18,6 +18,7 @@ class App {
 		this.routes();
 		// this.exceptionHandler();
 	}
+
 	middlewares() {
 		this.server.use(express.json());
 		this.server.use(express.urlencoded({ extended: false }));

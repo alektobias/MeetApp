@@ -19,6 +19,7 @@ class SubscriptionController {
 							[Op.gt]: new Date(),
 						},
 					},
+					include: [{ model: User, as: 'user', attributes: ['name'] }],
 					required: true,
 				},
 			],
@@ -34,7 +35,6 @@ class SubscriptionController {
 		const meetup = await Meetup.findByPk(req.params.meetupId, {
 			include: [User],
 		});
-		//TODO Check if the user is already subscribed
 
 		if (user.id === meetup.user_id) {
 			return res
@@ -78,6 +78,21 @@ class SubscriptionController {
 		});
 
 		return res.json(subscription);
+	}
+
+	async delete(req, res) {
+		// const meetup = await Meetup.findByPk(req.params.meetupId);
+
+		// if (meetup.past) {
+		// 	return res.status(400).json({ error: 'Meetup already pass.' });
+		// }
+
+		// const subscription = await Subscription.findOne({
+		// 	where: { user_id: req.userId, meetup_id: req.params.meetupId },
+		// });
+		// console.log(subscription);
+		// subscription.destroy();
+		return res.json({ message: 'Subscription canceled.' });
 	}
 }
 
