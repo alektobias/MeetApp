@@ -3,10 +3,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
 > Desenvolvimento do projeto proposto pela equipe da Rocketseat para certificação do GoStack 8.0. 
+## Preview
 
+![alt text](https://github.com/alektobias/MeetApp/blob/master/images/signin.png "Sign in")
+![alt text](https://github.com/alektobias/MeetApp/blob/master/images/dashboard.png "Dashboard")
+![alt text](https://github.com/alektobias/MeetApp/blob/master/images/create.png "Creating meetup")
 ## Como rodar o projeto
 
-###- Server
+### Server
 
 Para rodar o servidor é necessário estar com o banco de dados PostgreSQL (porta 5432) e MongoDB (port 27017).
 Acessando a pasta Server instale as dependencias rodando o comando:
