@@ -2,7 +2,7 @@
 ![Version](https://img.shields.io/badge/version-1.0-blue.svg?cacheSeconds=2592000)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#)
 
-> Desenvolvimento do projeto proposto pela equipe da Rocketseat para certificação do GoSctack 8.0. 
+> Desenvolvimento do projeto proposto pela equipe da Rocketseat para certificação do GoStack 8.0. 
 
 ## Como rodar o projeto
 
