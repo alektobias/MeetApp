@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "queue": "nodemon src/queue.js",
-    "build": "sucrase ./src -d ./dist --transforms imports"
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@sentry/node": "^5.6.2",
@@ -25,7 +27,8 @@
     "pg": "^7.12.1",
     "sequelize": "^5.19.0",
     "youch": "^2.0.10",
-    "yup": "^0.27.0"
+    "yup": "^0.27.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -37,5 +40,6 @@
     "prettier": "^1.18.2",
     "sequelize-cli": "^5.5.1",
     "sucrase": "^3.10.1"
-  }
+  },
+  "snyk": true
 }
